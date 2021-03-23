@@ -1,9 +1,7 @@
-# AuthAPI
+# Death Start AuthAPI
 
-Template of a Node.js API for user registration and login using MongoDB
-
-node.js express.js mongodb jwt mongoose 
-
+Template of a Node.js/MongoDB API for user register and login  
+Death Start because of the theme of my front-end example to use this API    
 ## Database
 
 ### MongoDB Atlas  
@@ -17,6 +15,13 @@ Documentation: https://docs.atlas.mongodb.com/getting-started/
 * Connect to your cluster
 
 ### Mongoose (ODM library - schemas and models)
-https://mongoosejs.com/docs/api.html
+https://mongoosejs.com/docs/api.html  
 npm i mongoose
+
+## .env
+PORT  
+MONGODB_URL  
+AUTH_KEY  
+
+
 
