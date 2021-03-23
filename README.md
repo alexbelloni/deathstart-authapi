@@ -1,7 +1,9 @@
 # Death Start AuthAPI
 
-Template of a Node.js/MongoDB API for user register and login  
-Death Start because of the theme of my front-end example to use this API    
+Template of Node.js/MongoDB API for user register and login  
+Fun fact: Death Start because of the theme of my front-end example to use this API    
+Node.js, Express, JWT, Mongoose, MongoDB  
+
 ## Database
 
 ### MongoDB Atlas  
