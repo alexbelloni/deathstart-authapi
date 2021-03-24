@@ -26,13 +26,13 @@ const Authorization = () => {
                 res.status(401).json({ error });
             } else if (user) {
                 if (!bcrypt.compareSync(req.body.password, user.hash)) {
-                    res.status(401).json({ error: 'user or password invalid.' });
+                    res.status(401).json({ error: 'e-mail or password invalid.' });
                 } else {
                     const {email, name, avatar, country} = user;
                     res.json({ email, name, avatar, country, token: jsonwebtoken.sign(user.email, process.env.AUTH_KEY) })
                 }
             } else {
-                res.status(401).json({ error: 'user or password invalid.' });
+                res.status(401).json({ error: 'e-mail or password invalid.' });
             }
         });
     }

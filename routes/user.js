@@ -31,11 +31,12 @@ module.exports = (app) => {
         });
 
     app.post('/user', (req, res) => {
-        const { name, email, password } = req.body;
+        const { name, email, password, country } = req.body;
         bcrypt.hash(password, 10, function (err, hash) {
             const newUser = new User({
                 name,
                 email,
+                country,
                 hash
             });
             newUser.save()
