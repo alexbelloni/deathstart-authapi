@@ -1,12 +1,12 @@
 const auth = require('../controllers/auth');
-const controller = require('../controllers/user');
+const controller = require('../controllers/evaluator');
 
 module.exports = (app) => {
-    app.get('/users', auth.requireLogin, (req, res) => {
+    app.get('/evaluators', auth.requireLogin, (req, res) => {
         controller.read().then(u => res.json(u));
     });
 
-    app.route('/user/:id')
+    app.route('/evaluator/:id')
         .get(auth.requireLogin, (req, res) => {
             controller.read(req.params.id).then(u => res.json(u));
         })
@@ -17,7 +17,7 @@ module.exports = (app) => {
             controller.deleteId(req.params.id).then(u => res.json(u));
         });
 
-    app.post('/user', (req, res) => {
+    app.post('/evaluator', (req, res) => {
         controller.create(req.body).then(u => res.json(u));
     });
 }

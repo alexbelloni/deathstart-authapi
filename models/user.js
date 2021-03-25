@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 //Schema is the structure
 const userSchema = new mongoose.Schema({
-    rhcode: {
+    rhCode: {
         type: String
     },
     email: {
@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    cellphone: {
+    phone: {
         type: String
     },
     cep: {
@@ -37,11 +37,11 @@ const userSchema = new mongoose.Schema({
     country: {
         type: String
     },
-    validationcode: {
+    validationCode: {
         type: String
     },
     birthday: {
-        type: String
+        type: Date
     },
     cpf: {
         type: String
@@ -52,14 +52,17 @@ const userSchema = new mongoose.Schema({
     address: {
         type: String
     },
-    addressnumber: {
+    addressNumber: {
+        type: Number
+    },
+    addressMore: {
         type: String
     },
-    addressmore: {
+    passcode: {
         type: String
     }
 }, { timestamps: true })
 
 //Model is the communication interface
-module.exports = mongoose.model('User', userSchema);
+module.exports = { schema: userSchema, model: mongoose.model('User', userSchema) }
 

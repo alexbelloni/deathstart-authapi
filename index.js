@@ -18,14 +18,15 @@ app.use(function (req, res, next) {
   
 app.use(express.json());
 
-require('./auth/authorization').set(app);
+require('./controllers/auth').verifyHeaders(app);
 
 app.get('/', (req, res) => {
     res.send('Hi, this is AuthAPI!');
 });
 
 require('./routes/user')(app);
-require('./auth/login').set(app);
+require('./routes/auth')(app);
+require('./routes/evaluator')(app);
 
 const mongoose = require('mongoose');
 

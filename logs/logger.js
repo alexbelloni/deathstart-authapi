@@ -1,6 +1,5 @@
 const morgan = require('morgan');
 const uuid = require('node-uuid');
-const authorization = require('../auth/authorization');
 
 morgan.token('key', req =>  req.id );
 
