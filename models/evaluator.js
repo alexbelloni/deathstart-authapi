@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const mySchema = new mongoose.Schema({
-    _userId:{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     cnpj: {

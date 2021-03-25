@@ -60,7 +60,7 @@ const userSchema = new mongoose.Schema({
     },
     passcode: {
         type: String
-    }
+    },
 }, { timestamps: true })
 
 //Model is the communication interface
