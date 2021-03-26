@@ -46,11 +46,26 @@ const User = () => {
             return fromDatabase({ error: "id required" });
         }
     }
+
+    function validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
     async function create(obj) {
         const user = toDatabase(obj);
         if (!user.password) {
             return fromDatabase({ error: "password required" });
         }
+        if (!validateEmail(user.email)) {
+            return fromDatabase({ error: "email invalid" });
+        }
+
+        const exists = await model.findOne().where({email: user.email});
+        if (exists) {
+            return fromDatabase({ error: "email already is used" });
+        }
+        
         return new Promise((resolve, reject) => {
             bcrypt.hash(user.password, 10, function (err, hash) {
                 const newUser = new model({
