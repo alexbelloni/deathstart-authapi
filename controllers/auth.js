@@ -15,7 +15,6 @@ const Auth = () => {
                 req.user = undefined
                 next();
             }
-
         })
     }
 

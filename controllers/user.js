@@ -1,10 +1,11 @@
 const { model } = require('../models/user');
 const bcrypt = require('bcrypt');
+const evaluatorController = require('./evaluator');
 
 const User = () => {
-    function fromDatabase({ res, error }) {
+    function fromDatabase({ res, evaluator, error }) {
         const { _id, name, email, country } = res || {};
-        return { id: _id, name, email, country, error };
+        return { id: _id, name, email, country, evaluator, error };
     }
     function toDatabase(req) {
         const { name, email, password, country } = req;
@@ -12,11 +13,17 @@ const User = () => {
     }
     async function read(id) {
         if (!id) {
+            const result = [];
             const res = await model.find();
-            return res.map(r => fromDatabase({ res: r }));
+            for (let i = 0; i < res.length; i++) {
+                const user = res[i];
+                const evaluator = await evaluatorController.readByUserId(user._id)
+                result.push(fromDatabase({ res: user, evaluator }));
+            }
+            return result;
         } else {
             try {
-                const res = await model.findById(id).populate('evaluator');;
+                const res = await model.findById(id);
                 return fromDatabase({ res });
             } catch (e) {
                 return fromDatabase({ error: e.message });

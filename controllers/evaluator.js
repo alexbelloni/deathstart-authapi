@@ -36,6 +36,10 @@ const Evaluator = () => {
             });
         }
     }
+    async function readByUserId(id) {
+        const res = await model.findOne().where({ user: { _id: id } });
+        return res ? fromDatabase({ res }) : null;
+    }
     async function update(id, obj) {
         if (id) {
             const res = await model.findByIdAndUpdate(id, obj, { new: true });
@@ -70,7 +74,8 @@ const Evaluator = () => {
         read,
         update,
         deleteId,
-        fromDatabase
+        fromDatabase,
+        readByUserId
     }
 }
 
