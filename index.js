@@ -27,6 +27,8 @@ app.get('/', (req, res) => {
 require('./routes/user')(app);
 require('./routes/auth')(app);
 require('./routes/evaluator')(app);
+require('./routes/question')(app);
+require('./routes/answer')(app);
 
 const mongoose = require('mongoose');
 
