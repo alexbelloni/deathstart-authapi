@@ -1,7 +1,7 @@
-# Death Start AuthAPI
+# Death Star AuthAPI
 
 Template of Node.js/MongoDB API for user register and login  
-Fun fact: Death Start because of the theme of my front-end example to use this API    
+Fun fact: Death Star because of the theme of my front-end example to use this API. The front-end [demo](https://deathstar-web.vercel.app/)    
 Node.js, Express, JWT, Mongoose, MongoDB  
 
 ## Database
